@@ -1,0 +1,77 @@
+{
+    "action": "get",
+    "node": {
+        "createdIndex": 19,
+        "dir": true,
+        "key": "/discover/service/proxy-api",
+        "modifiedIndex": 19,
+        "nodes": [
+            {
+                "createdIndex": 19,
+                "dir": true,
+                "key": "/discover/service/proxy-api/totem-development",
+                "modifiedIndex": 19,
+                "nodes": [
+                    {
+                        "createdIndex": 19,
+                        "dir": true,
+                        "key": "/discover/service/proxy-api/totem-development/i-9ef7e4c3",
+                        "modifiedIndex": 19,
+                        "nodes": [
+                            {
+                                "createdIndex": 19,
+                                "key": "/discover/service/proxy-api/totem-development/i-9ef7e4c3/356414ee280b",
+                                "modifiedIndex": 19,
+                                "value": "tcp://10.198.67.175:49255"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "createdIndex": 46,
+                "dir": true,
+                "key": "/discover/service/proxy-api/not-production",
+                "modifiedIndex": 46,
+                "nodes": [
+                    {
+                        "createdIndex": 46,
+                        "dir": true,
+                        "key": "/discover/service/proxy-api/not-production/i-fe14d9a3",
+                        "modifiedIndex": 46,
+                        "nodes": [
+                            {
+                                "createdIndex": 46,
+                                "key": "/discover/service/proxy-api/not-production/i-fe14d9a3/5caa39e5715d",
+                                "modifiedIndex": 46,
+                                "value": "tcp://10.202.158.62:49255"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "createdIndex": 68,
+                "dir": true,
+                "key": "/discover/service/proxy-api/production",
+                "modifiedIndex": 68,
+                "nodes": [
+                    {
+                        "createdIndex": 68,
+                        "dir": true,
+                        "key": "/discover/service/proxy-api/production/i-591a8804",
+                        "modifiedIndex": 68,
+                        "nodes": [
+                            {
+                                "createdIndex": 68,
+                                "key": "/discover/service/proxy-api/production/i-591a8804/018231d64bd3",
+                                "modifiedIndex": 68,
+                                "value": "tcp://10.202.159.221:49256"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
