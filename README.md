@@ -1,7 +1,7 @@
 Discover: Docker Service Discovery Client for Node.JS
 ========
 
-[![Build Status](https://travis-ci.org/totem/discover-client-node.png?branch=master)](https://travis-ci.org/totem/discover-client-node)
+[![Build Status](https://travis-ci.org/totem/discover-client-node.png?branch=develop)](https://travis-ci.org/totem/discover-client-node)
 
 This is a NodeJS client library for quick lookup of services published by [Discover](http://github.com/totem/discover).
 
@@ -13,7 +13,7 @@ npm install --save discover-client
 
 ## Quick Start
 
-```json
+```js
 var Discover = require('discover-client'),
     discover = new Discover({ host: 'etcd.domain.com', port: 4001, prefix: 'discover' });
 
