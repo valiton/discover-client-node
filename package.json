@@ -1,6 +1,6 @@
 {
   "name": "discover-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "NodeJS client for Discover, a Docker service discovery provider",
   "keywords": [
     "docker",

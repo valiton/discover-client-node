@@ -2,8 +2,9 @@
 
 var events = require('events'),
     util = require('util'),
-    validPayload1 = require('./etcd-valid-payload-1.json'),
-    validPayload2 = require('./etcd-valid-payload-2.json');
+    validPayload = require('./etcd-valid-payload-1.json'),
+    setPayload = require('./etcd-set-payload.json'),
+    deletePayload = require('./etcd-delete-payload.json');
 
 
 module.exports.validMock = function (host, port) {
@@ -11,7 +12,7 @@ module.exports.validMock = function (host, port) {
 
   var client = {
     get: function (key, opt, cb) {
-      cb(null, validPayload1);
+      cb(null, validPayload);
     },
     watcher: function (key, opt) {
       return watcherInstance;
@@ -46,5 +47,6 @@ function Watcher () {
 util.inherits(Watcher, events.EventEmitter);
 
 Watcher.prototype.trigger = function () {
-  this.emit('change', validPayload2);
+  this.emit('set', setPayload);
+  this.emit('delete', deletePayload);
 }
