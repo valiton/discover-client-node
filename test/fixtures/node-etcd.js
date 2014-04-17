@@ -12,7 +12,9 @@ module.exports.validMock = function (host, port) {
 
   var client = {
     get: function (key, opt, cb) {
-      cb(null, validPayload);
+      process.nextTick(function() {
+        cb(null, validPayload);
+      });
     },
     watcher: function (key, opt) {
       return watcherInstance;
@@ -28,7 +30,9 @@ module.exports.errorMock = function (host, port) {
 
   var client = {
     get: function (key, opt, cb) {
-      cb(new Error('error'));
+      process.nextTick(function() {
+        cb(new Error('error'));
+      });
     },
     watcher: function (key, opt) {
       return watcherInstance;
@@ -47,6 +51,9 @@ function Watcher () {
 util.inherits(Watcher, events.EventEmitter);
 
 Watcher.prototype.trigger = function () {
-  this.emit('set', setPayload);
-  this.emit('delete', deletePayload);
+  var self = this;
+  process.nextTick(function() {
+    self.emit('set', setPayload);
+    self.emit('delete', deletePayload);
+  });
 }
