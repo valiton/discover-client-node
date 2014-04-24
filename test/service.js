@@ -180,10 +180,12 @@ describe('Discover Client - Service', function () {
         expect(err).to.not.exist;
       }
 
-      var list = service.list();
+      service.on('notfound', function() {
+        var list = service.list();
 
-      expect([]).to.deep.equal(list);
-      done();
+        expect([]).to.deep.equal(list);
+        done();
+      });
     });
   });
 

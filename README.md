@@ -23,5 +23,8 @@ service.on('resolved', function() {
   service.uri(); // returns URI for a random instance who provides the given service
   service.list(); // returns all URI's for instances providing the given service
 });
-```
 
+service.on('notfound', function() {
+  // Error handling
+});
+```
