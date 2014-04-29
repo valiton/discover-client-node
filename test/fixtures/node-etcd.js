@@ -50,10 +50,16 @@ function Watcher () {
 
 util.inherits(Watcher, events.EventEmitter);
 
-Watcher.prototype.trigger = function () {
+Watcher.prototype.triggerSet = function () {
   var self = this;
   process.nextTick(function() {
     self.emit('set', setPayload);
+  });
+}
+
+Watcher.prototype.triggerDelete = function () {
+  var self = this;
+  process.nextTick(function() {
     self.emit('delete', deletePayload);
   });
 }

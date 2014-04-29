@@ -24,6 +24,10 @@ service.on('resolved', function() {
   service.list(); // returns all URI's for instances providing the given service
 });
 
+service.on('changed', function() {
+  // handle change
+});
+
 service.on('notfound', function() {
   // Error handling
 });

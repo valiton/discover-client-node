@@ -201,15 +201,19 @@ describe('Discover Client - Service', function () {
         expect(err).to.not.exist;
       }
 
-      // Trigger a change event
-      etcd.watcherInstance.trigger();
-
       // Wait a tick so the event can propigate
-      process.nextTick(function () {
-        var list = service.list();
-        expect(URI_SET_2).to.deep.equal(list);
-        done();
+      service.once('changed', function () {
+        service.once('changed', function () {
+          var list = service.list();
+          expect(URI_SET_2).to.deep.equal(list);
+          done();
+        });
+        // Trigger a change event
+        etcd.watcherInstance.triggerDelete();
       });
+
+      // Trigger a change event
+      etcd.watcherInstance.triggerSet();
     });
   });
 
