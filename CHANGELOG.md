@@ -10,3 +10,7 @@
 
 * Resolved issue where etcd watch events were not properly handled
 * Updated all dependencies
+
+### 0.1.1 (July 28, 2014)
+
+* Updated all dependencies
