@@ -14,3 +14,7 @@
 ### 0.1.1 (July 28, 2014)
 
 * Updated all dependencies
+
+### 0.1.2 (July 28, 2014)
+
+* Fixed issue where a non-existent search path would make the lib throw an uncaught error

@@ -1,6 +1,6 @@
 {
   "name": "discover-client",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {
     "node-etcd": {
       "version": "2.1.2",
