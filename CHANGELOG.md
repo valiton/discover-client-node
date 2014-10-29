@@ -15,6 +15,11 @@
 
 * Updated all dependencies
 
-### 0.1.2 (July 28, 2014)
+### 0.1.2 (Oct 27, 2014)
 
 * Fixed issue where a non-existent search path would make the lib throw an uncaught error
+
+### 0.1.3 (Oct 29, 2014)
+
+* Updated to latest `node-etcd` library. This update resolves several issues where service watchers were disconnecting from etcd after a while.
+* Updated all other dependencies
