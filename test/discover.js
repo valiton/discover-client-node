@@ -58,11 +58,13 @@ describe('Discover Client - Discover', function () {
         expect(err).to.not.exist;
       }
 
-      var service = discover.resolve('proxy-api'),
-          list = service.list();
+      var service = discover.resolve('proxy-api');
+      service.on('resolved', function() {
+        var list = service.list();
 
-      expect(list).to.not.be.empty;
-      done();
+        expect(list).to.not.be.empty;
+        done();
+      });
     });
 
     it('should throw attempting to resolve a new Service without a service name', function (done) {

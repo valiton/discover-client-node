@@ -65,6 +65,19 @@ describe('Discover Client - Service', function () {
       done();
     });
 
+    it('should create a new Service given a valid service name and emit resolved event', function (done) {
+      var etcd = fixtures.etcd.validMock('host.com', '1234'),
+          serviceFactory;
+
+      serviceFactory = ServiceFactory('discover', etcd);
+
+      var service = serviceFactory.newService('proxy-api');
+
+      expect(service.on).to.be.a('function');
+
+      service.on('resolved', function() { done(); });
+    });
+
     it('should throw attempting to create a new Service without a service name', function (done) {
       var etcd = fixtures.etcd.validMock('host.com', '1234'),
           serviceFactory,
@@ -121,10 +134,12 @@ describe('Discover Client - Service', function () {
         expect(err).to.not.exist;
       }
 
-      var uri = service.uri();
+      service.on('resolved', function() {
+        var uri = service.uri();
 
-      expect(URI_SET_1).to.include.members([uri]);
-      done();
+        expect(URI_SET_1).to.include.members([uri]);
+        done();
+      });
     });
   });
 
@@ -140,10 +155,12 @@ describe('Discover Client - Service', function () {
         expect(err).to.not.exist;
       }
 
-      var list = service.list();
+      service.on('resolved', function() {
+        var list = service.list();
 
-      expect(URI_SET_1).to.deep.equal(list);
-      done();
+        expect(URI_SET_1).to.deep.equal(list);
+        done();
+      });
     });
 
     it('should find no service instances when etcd has an error resolving the service for a given service name', function (done) {
@@ -163,10 +180,12 @@ describe('Discover Client - Service', function () {
         expect(err).to.not.exist;
       }
 
-      var list = service.list();
+      service.on('notfound', function() {
+        var list = service.list();
 
-      expect([]).to.deep.equal(list);
-      done();
+        expect([]).to.deep.equal(list);
+        done();
+      });
     });
   });
 
@@ -182,15 +201,19 @@ describe('Discover Client - Service', function () {
         expect(err).to.not.exist;
       }
 
-      // Trigger a change event
-      etcd.watcherInstance.trigger();
-
       // Wait a tick so the event can propigate
-      process.nextTick(function () {
-        var list = service.list();
-        expect(URI_SET_2).to.deep.equal(list);
-        done();
+      service.once('changed', function () {
+        service.once('changed', function () {
+          var list = service.list();
+          expect(URI_SET_2).to.deep.equal(list);
+          done();
+        });
+        // Trigger a change event
+        etcd.watcherInstance.triggerDelete();
       });
+
+      // Trigger a change event
+      etcd.watcherInstance.triggerSet();
     });
   });
 
