@@ -1,0 +1,48 @@
+{
+  "name": "discover-client",
+  "version": "0.1.3-val",
+  "description": "NodeJS client for Discover, a Docker service discovery provider",
+  "keywords": [
+    "docker",
+    "etcd",
+    "totem",
+    "service",
+    "discovery",
+    "client"
+  ],
+  "main": "lib/discover.js",
+  "dependencies" : {
+    "winston": "*",
+    "node-etcd": "*"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "rewire": "*",
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-mocha-cov": "*",
+    "mocha-term-cov-reporter": "*",
+    "grunt-cli": "*",
+    "grunt-shell": "*"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+        "discover-client-node/lib",
+        "discover-client-node/index"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/totem/discover-client-node.git"
+  },
+  "author": "Mike Moulton <mike@meltmedia.com>",
+  "bugs": {
+    "url": "https://github.com/totem/discover-client-node/issues"
+  },
+  "license" : "MIT"
+}
